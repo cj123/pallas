@@ -16,6 +16,8 @@ const (
 	ClientVersion = 2
 )
 
+var UserAgent = "pallasutil"
+
 type Request struct {
 	ClientVersion           int             `json:"ClientVersion"`
 	AssetType               AssetType       `json:"AssetType"`
@@ -42,7 +44,7 @@ func MakeRequest(req *Request, httpClient *http.Client) (*Response, error) {
 
 	httpReq.Header.Add("Content-Type", "application/json")
 	httpReq.Header.Add("Accept", "application/json")
-	httpReq.Header.Add("User-Agent", "pallasutil")
+	httpReq.Header.Add("User-Agent", UserAgent)
 
 	resp, err := httpClient.Do(httpReq)
 
